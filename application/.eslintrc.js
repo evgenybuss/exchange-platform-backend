@@ -2,11 +2,15 @@ module.exports = {
   parser: '@typescript-eslint/parser',
   parserOptions: {
     project: 'tsconfig.json',
+    tsconfigRootDir: __dirname,
     sourceType: 'module',
+    ecmaVersion: 2020,
   },
   plugins: ['@typescript-eslint/eslint-plugin'],
   extends: [
+    'airbnb-base',
     'plugin:@typescript-eslint/recommended',
+    'airbnb-typescript/base',
     'plugin:prettier/recommended',
   ],
   root: true,
@@ -14,11 +18,11 @@ module.exports = {
     node: true,
     jest: true,
   },
-  ignorePatterns: ['.eslintrc.js'],
+  ignorePatterns: ['.eslintrc.js', 'dist/*'],
   rules: {
-    '@typescript-eslint/interface-name-prefix': 'off',
-    '@typescript-eslint/explicit-function-return-type': 'off',
-    '@typescript-eslint/explicit-module-boundary-types': 'off',
-    '@typescript-eslint/no-explicit-any': 'off',
+    'class-methods-use-this': 'off',
+    'import/prefer-default-export': 'off',
+    '@typescript-eslint/explicit-function-return-type': 'error',
+    'prettier/prettier': ['error', { endOfLine: 'auto' }],
   },
 };
